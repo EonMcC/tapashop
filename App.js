@@ -11,9 +11,14 @@ export default function App() {
     { name: "Milk, Oat", toGet: true, inBasket: false },
   ];
 
+  const toggleToGet = (food) => {
+    console.log(food);
+    allFood[0].toGet = !allFood[0].toGet;
+  };
+
   return (
     <View style={styles.app}>
-      <AllFoodCont allFood={allFood}></AllFoodCont>
+      <AllFoodCont allFood={allFood} toggleToGet={toggleToGet}></AllFoodCont>
       <ToGetCont allFood={allFood}></ToGetCont>
       <InBasketCont allFood={allFood}></InBasketCont>
     </View>

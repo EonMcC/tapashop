@@ -2,9 +2,9 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import FoodCard from "./FoodCard";
 
-const FoodCardList = ({ food }) => {
+const FoodCardList = ({ food, toggleToGet }) => {
   let foodList = food.map((food, index) => (
-    <FoodCard food={food} key={index}></FoodCard>
+    <FoodCard food={food} key={index} toggleToGet={toggleToGet}></FoodCard>
   ));
 
   return (

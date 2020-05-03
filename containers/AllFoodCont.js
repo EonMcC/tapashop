@@ -2,13 +2,13 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import FoodCardList from "../components/FoodCardList";
 
-const AllFoodCont = ({ allFood }) => {
+const AllFoodCont = ({ allFood, toggleToGet }) => {
   return (
     <View style={styles.allFoodCont}>
       <View style={styles.header}>
         <Text style={styles.headerFont}>All Food</Text>
       </View>
-      <FoodCardList food={allFood}></FoodCardList>
+      <FoodCardList food={allFood} toggleToGet={toggleToGet}></FoodCardList>
     </View>
   );
 };
