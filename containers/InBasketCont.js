@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import FoodCardList from "../components/FoodCardList";
 
-const InBasketCont = ({ allFood }) => {
+const InBasketCont = ({ allFood, toggleBasket }) => {
   let foodList = allFood.filter((food, index) => food.inBasket);
 
   return (
@@ -10,7 +10,12 @@ const InBasketCont = ({ allFood }) => {
       <View style={styles.header}>
         <Text style={styles.headerFont}>In Basket</Text>
       </View>
-      <FoodCardList food={foodList}></FoodCardList>
+      <FoodCardList
+        food={foodList}
+        toggleBasket={toggleBasket}
+        showBasketBtn={true}
+        inBasketCont={true}
+      ></FoodCardList>
     </View>
   );
 };

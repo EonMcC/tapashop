@@ -6,28 +6,49 @@ import {
   TouchableHighlight,
   Button,
 } from "react-native";
+import { getCurrentFrame } from "expo/build/AR";
 
-const FoodCard = ({ food, toggleToGet, showBasketBtn }) => {
-  const [rerender, setRerender] = useState(1);
-
+const FoodCard = ({
+  food,
+  toggleToGet,
+  toggleBasket,
+  showBasketBtn,
+  inBasketCont,
+}) => {
   const handleToggleToGet = () => {
     toggleToGet(food);
-    setRerender(rerender + 1);
+  };
+
+  const handleToggleBasket = () => {
+    toggleBasket(food);
   };
 
   const cardDisplay = () => {
-    if (showBasketBtn) {
+    if (showBasketBtn && inBasketCont) {
       return (
-        <View style={food.toGet ? styles.cardCheck : styles.card}>
+        <View style={food.toGet ? styles.cardToGet : styles.card}>
+          <View>
+            <Text style={styles.cardText}>{food.name}</Text>
+          </View>
+          <Button title="+/-" onPress={handleToggleBasket} />
+        </View>
+      );
+    } else if (showBasketBtn) {
+      return (
+        <View style={food.toGet ? styles.cardToGet : styles.card}>
           <TouchableHighlight onPress={handleToggleToGet}>
             <Text style={styles.cardText}>{food.name}</Text>
           </TouchableHighlight>
-          <Button title="+" />
+          <View
+            style={food.inBasket ? styles.btnInBasket : styles.btnNotBasket}
+          >
+            <Button title="+/-" onPress={handleToggleBasket} />
+          </View>
         </View>
       );
     } else {
       return (
-        <View style={food.toGet ? styles.cardCheck : styles.card}>
+        <View style={food.toGet ? styles.cardToGet : styles.card}>
           <TouchableHighlight onPress={handleToggleToGet}>
             <Text style={styles.cardText}>{food.name}</Text>
           </TouchableHighlight>
@@ -51,7 +72,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
   },
-  cardCheck: {
+  cardToGet: {
     borderColor: "green",
     width: 300,
     borderWidth: 1,
@@ -66,6 +87,11 @@ const styles = StyleSheet.create({
   cardText: {
     fontSize: 20,
   },
+  btnInBasket: {
+    borderColor: "green",
+    borderWidth: 2,
+  },
+  btnNotBasket: {},
 });
 
 export default FoodCard;

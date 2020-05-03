@@ -22,14 +22,30 @@ export default function App() {
         setAllFood(allFoodCopy);
       }
     }
-    console.log(food);
+  };
+
+  const toggleBasket = (food) => {
+    const allFoodCopy = [...allFood];
+    for (let i in allFoodCopy) {
+      if (allFoodCopy[i].name === food.name) {
+        allFoodCopy[i].inBasket = !allFood[i].inBasket;
+        setAllFood(allFoodCopy);
+      }
+    }
   };
 
   return (
     <View style={styles.app}>
       <AllFoodCont allFood={allFood} toggleToGet={toggleToGet}></AllFoodCont>
-      <ToGetCont allFood={allFood} toggleToGet={toggleToGet}></ToGetCont>
-      <InBasketCont allFood={allFood}></InBasketCont>
+      <ToGetCont
+        allFood={allFood}
+        toggleToGet={toggleToGet}
+        toggleBasket={toggleBasket}
+      ></ToGetCont>
+      <InBasketCont
+        allFood={allFood}
+        toggleBasket={toggleBasket}
+      ></InBasketCont>
     </View>
   );
 }

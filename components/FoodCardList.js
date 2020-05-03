@@ -2,13 +2,21 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import FoodCard from "./FoodCard";
 
-const FoodCardList = ({ food, toggleToGet, showBasketBtn }) => {
+const FoodCardList = ({
+  food,
+  toggleToGet,
+  toggleBasket,
+  showBasketBtn,
+  inBasketCont,
+}) => {
   let foodList = food.map((food, index) => (
     <FoodCard
       food={food}
       key={index}
       toggleToGet={toggleToGet}
+      toggleBasket={toggleBasket}
       showBasketBtn={showBasketBtn}
+      inBasketCont={inBasketCont}
     ></FoodCard>
   ));
 
