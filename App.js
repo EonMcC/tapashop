@@ -16,6 +16,9 @@ export default function App() {
     for (let i in allFoodCopy) {
       if (allFoodCopy[i].name === food.name) {
         allFoodCopy[i].toGet = !allFood[i].toGet;
+        if (allFoodCopy[i].inBasket) {
+          allFoodCopy[i].inBasket = false;
+        }
         setAllFood(allFoodCopy);
       }
     }
@@ -25,7 +28,7 @@ export default function App() {
   return (
     <View style={styles.app}>
       <AllFoodCont allFood={allFood} toggleToGet={toggleToGet}></AllFoodCont>
-      <ToGetCont allFood={allFood}></ToGetCont>
+      <ToGetCont allFood={allFood} toggleToGet={toggleToGet}></ToGetCont>
       <InBasketCont allFood={allFood}></InBasketCont>
     </View>
   );

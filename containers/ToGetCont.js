@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import FoodCardList from "../components/FoodCardList";
 
-const ToGetCont = ({ allFood }) => {
+const ToGetCont = ({ allFood, toggleToGet }) => {
   let foodList = allFood.filter((food, index) => food.toGet);
 
   return (
@@ -10,7 +10,11 @@ const ToGetCont = ({ allFood }) => {
       <View style={styles.header}>
         <Text style={styles.headerFont}>To Get</Text>
       </View>
-      <FoodCardList food={foodList}></FoodCardList>
+      <FoodCardList
+        food={foodList}
+        toggleToGet={toggleToGet}
+        showBasketBtn={true}
+      ></FoodCardList>
     </View>
   );
 };

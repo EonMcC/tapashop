@@ -1,7 +1,13 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TouchableHighlight } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableHighlight,
+  Button,
+} from "react-native";
 
-const FoodCard = ({ food, toggleToGet }) => {
+const FoodCard = ({ food, toggleToGet, showBasketBtn }) => {
   const [rerender, setRerender] = useState(1);
 
   const handleToggleToGet = () => {
@@ -9,14 +15,28 @@ const FoodCard = ({ food, toggleToGet }) => {
     setRerender(rerender + 1);
   };
 
-  return (
-    <TouchableHighlight
-      style={food.toGet ? styles.cardCheck : styles.card}
-      onPress={handleToggleToGet}
-    >
-      <Text style={styles.cardText}>{food.name}</Text>
-    </TouchableHighlight>
-  );
+  const cardDisplay = () => {
+    if (showBasketBtn) {
+      return (
+        <View style={food.toGet ? styles.cardCheck : styles.card}>
+          <TouchableHighlight onPress={handleToggleToGet}>
+            <Text style={styles.cardText}>{food.name}</Text>
+          </TouchableHighlight>
+          <Button title="+" />
+        </View>
+      );
+    } else {
+      return (
+        <View style={food.toGet ? styles.cardCheck : styles.card}>
+          <TouchableHighlight onPress={handleToggleToGet}>
+            <Text style={styles.cardText}>{food.name}</Text>
+          </TouchableHighlight>
+        </View>
+      );
+    }
+  };
+
+  return cardDisplay();
 };
 
 const styles = StyleSheet.create({
@@ -28,6 +48,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 10,
     margin: 5,
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   cardCheck: {
     borderColor: "green",
@@ -38,6 +60,8 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 5,
     opacity: 0.5,
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   cardText: {
     fontSize: 20,
