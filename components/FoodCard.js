@@ -1,10 +1,27 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const FoodCard = () => {
-  return <Text>FoodCard</Text>;
+const FoodCard = ({ food }) => {
+  return (
+    <View style={styles.card}>
+      <Text style={styles.cardText}>{food.name}</Text>
+    </View>
+  );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  card: {
+    borderColor: "grey",
+    width: 300,
+    borderWidth: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 10,
+    margin: 5,
+  },
+  cardText: {
+    fontSize: 20,
+  },
+});
 
 export default FoodCard;

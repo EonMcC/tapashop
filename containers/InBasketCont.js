@@ -2,13 +2,36 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import FoodCardList from "../components/FoodCardList";
 
-const InBasketCont = () => {
+const InBasketCont = ({ allFood }) => {
+  let foodList = allFood.filter((food, index) => food.inBasket);
+
   return (
-    <>
-      <Text>In Basket</Text>
-      <FoodCardList></FoodCardList>
-    </>
+    <View style={styles.inBasketCont}>
+      <View style={styles.header}>
+        <Text style={styles.headerFont}>In Basket</Text>
+      </View>
+      <FoodCardList food={foodList}></FoodCardList>
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  inBasketCont: {
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  header: {
+    paddingTop: 20,
+    paddingBottom: 10,
+    backgroundColor: "yellow",
+    width: "100%",
+  },
+  headerFont: {
+    textAlign: "center",
+    fontSize: 25,
+    fontWeight: "bold",
+  },
+});
 
 export default InBasketCont;

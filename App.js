@@ -5,20 +5,23 @@ import ToGetCont from "./containers/ToGetCont";
 import InBasketCont from "./containers/InBasketCont";
 
 export default function App() {
+  let allFood = [
+    { name: "Apples", toGet: false, inBasket: false },
+    { name: "Tofu", toGet: true, inBasket: true },
+    { name: "Milk, Oat", toGet: true, inBasket: false },
+  ];
+
   return (
-    <>
-      <AllFoodCont></AllFoodCont>
-      <ToGetCont></ToGetCont>
-      <InBasketCont></InBasketCont>
-    </>
+    <View style={styles.app}>
+      <AllFoodCont allFood={allFood}></AllFoodCont>
+      <ToGetCont allFood={allFood}></ToGetCont>
+      <InBasketCont allFood={allFood}></InBasketCont>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  app: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
   },
 });
