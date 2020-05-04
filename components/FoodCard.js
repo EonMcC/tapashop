@@ -6,7 +6,6 @@ import {
   TouchableHighlight,
   Button,
 } from "react-native";
-import { getCurrentFrame } from "expo/build/AR";
 
 const FoodCard = ({
   food,

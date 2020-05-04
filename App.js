@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import AllFoodCont from "./containers/AllFoodCont";
 import ToGetCont from "./containers/ToGetCont";
 import InBasketCont from "./containers/InBasketCont";
+import Swiper from "react-native-swiper";
 
 export default function App() {
   const [allFood, setAllFood] = useState([
@@ -35,7 +36,7 @@ export default function App() {
   };
 
   return (
-    <View style={styles.app}>
+    <Swiper loop={false} showsPagination={false}>
       <AllFoodCont allFood={allFood} toggleToGet={toggleToGet}></AllFoodCont>
       <ToGetCont
         allFood={allFood}
@@ -46,12 +47,8 @@ export default function App() {
         allFood={allFood}
         toggleBasket={toggleBasket}
       ></InBasketCont>
-    </View>
+    </Swiper>
   );
 }
 
-const styles = StyleSheet.create({
-  app: {
-    flex: 1,
-  },
-});
+const styles = StyleSheet.create({});
