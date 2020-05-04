@@ -7,10 +7,15 @@ import Swiper from "react-native-swiper";
 
 export default function App() {
   const [allFood, setAllFood] = useState([
-    { id: 1, name: "Apples", toGet: false, inBasket: false },
-    { id: 2, name: "Tofu", toGet: true, inBasket: true },
-    { id: 3, name: "Milk, Oat", toGet: true, inBasket: false },
+    { name: "Apples", toGet: false, inBasket: false },
+    { name: "Tofu", toGet: true, inBasket: true },
+    { name: "Milk, Oat", toGet: true, inBasket: false },
   ]);
+
+  const addFood = (name) => {
+    const newFood = { name: name, toGet: false, inBasket: false };
+    setAllFood([...allFood, newFood]);
+  };
 
   const toggleToGet = (food) => {
     const allFoodCopy = [...allFood];
@@ -37,7 +42,11 @@ export default function App() {
 
   return (
     <Swiper loop={false} showsPagination={false}>
-      <AllFoodCont allFood={allFood} toggleToGet={toggleToGet}></AllFoodCont>
+      <AllFoodCont
+        allFood={allFood}
+        toggleToGet={toggleToGet}
+        addFood={addFood}
+      ></AllFoodCont>
       <ToGetCont
         allFood={allFood}
         toggleToGet={toggleToGet}
