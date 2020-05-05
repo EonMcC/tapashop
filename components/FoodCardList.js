@@ -64,7 +64,7 @@ const FoodCardList = ({
         // extraData={mappedFood}
         renderItem={renderItem}
         keyExtractor={(item, index) => `draggable-item-${item.key}`}
-        onDragEnd={({ data }) => setMappedFood({ data })}
+        onDragEnd={({ data }) => setMappedFood(data)}
       />
     </View>
   );
