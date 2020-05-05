@@ -22,6 +22,7 @@ const InBasketCont = ({ allFood, toggleBasket }) => {
 
 const styles = StyleSheet.create({
   inBasketCont: {
+    flex: 1,
     width: "100%",
     justifyContent: "center",
     alignItems: "center",

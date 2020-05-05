@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, Button, TextInput } from "react-native";
 import FoodCardList from "../components/FoodCardList";
+import Test from "../components/Test";
 
 const AllFoodCont = ({ allFood, toggleToGet, addFood }) => {
   const [enteredText, setEnteredText] = useState("");
@@ -35,6 +36,7 @@ const AllFoodCont = ({ allFood, toggleToGet, addFood }) => {
 
 const styles = StyleSheet.create({
   allFoodCont: {
+    flex: 1,
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
