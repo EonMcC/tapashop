@@ -29,6 +29,7 @@ export default function App() {
         setAllFood(allFoodCopy);
       }
     }
+    console.log(food);
   };
 
   const toggleBasket = (food) => {

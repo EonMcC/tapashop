@@ -10,22 +10,17 @@ const FoodCardList = ({
   showBasketBtn,
   inBasketCont,
 }) => {
-  const [mappedFood, setMappedFood] = useState();
-
-  let testFood = [
-    { name: "Apples", toGet: false, inBasket: false },
-    { name: "Tofu", toGet: true, inBasket: true },
-    { name: "Milk, Oat", toGet: true, inBasket: false },
-  ];
-
-  let testTest = testFood.map((food, index) => ({
-    food: food,
-    key: `item-${index}`,
-    label: food.name,
-    margin: 10,
-  }));
+  const [mappedFood, setMappedFood] = useState(
+    food.map((food, index) => ({
+      food: food,
+      key: `item-${index}`,
+      label: food.name,
+      margin: 10,
+    }))
+  );
 
   let renderItem = ({ item, index, drag, isActive }) => {
+    console.log(mappedFood);
     return (
       <TouchableOpacity
         style={{
@@ -65,7 +60,8 @@ const FoodCardList = ({
   return (
     <View style={styles.foodCardList}>
       <DraggableFlatList
-        data={testTest}
+        data={mappedFood}
+        // extraData={mappedFood}
         renderItem={renderItem}
         keyExtractor={(item, index) => `draggable-item-${item.key}`}
         onDragEnd={({ data }) => setMappedFood({ data })}
