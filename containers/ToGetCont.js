@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import FoodCardList from "../components/FoodCardList";
 
-const ToGetCont = ({ allFood, toggleToGet, toggleBasket }) => {
-  let foodList = allFood.filter((food, index) => food.toGet);
+const ToGetCont = ({ allFood, toggleToGet, toggleBasket, updateList }) => {
+  useEffect(() => {
+    setFoodList(allFood);
+  });
+  const [foodList, setFoodList] = useState(
+    allFood.filter((food, index) => food.toGet)
+  );
 
   return (
     <View style={styles.toGetCont}>
@@ -15,6 +20,7 @@ const ToGetCont = ({ allFood, toggleToGet, toggleBasket }) => {
         toggleToGet={toggleToGet}
         showBasketBtn={true}
         toggleBasket={toggleBasket}
+        updateList={updateList}
       ></FoodCardList>
     </View>
   );

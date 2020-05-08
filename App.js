@@ -4,14 +4,14 @@ import AllFoodCont from "./containers/AllFoodCont";
 import ToGetCont from "./containers/ToGetCont";
 import InBasketCont from "./containers/InBasketCont";
 import Swiper from "react-native-swiper";
-import FoodCardList from "./components/FoodCardList";
 
 export default function App() {
   const [allFood, setAllFood] = useState([
-    { name: "Apples", toGet: false, inBasket: false },
-    { name: "Tofu", toGet: true, inBasket: true },
-    { name: "Milk, Oat", toGet: true, inBasket: false },
+    { id: 1, name: "Apples", toGet: false, inBasket: false },
+    { id: 2, name: "Tofu", toGet: true, inBasket: true },
+    { id: 3, name: "Milk, Oat", toGet: true, inBasket: false },
   ]);
+  const [updateList, setUpdateList] = useState(1);
 
   const addFood = (name) => {
     const newFood = { name: name, toGet: false, inBasket: false };
@@ -27,9 +27,9 @@ export default function App() {
           allFoodCopy[i].inBasket = false;
         }
         setAllFood(allFoodCopy);
+        setUpdateList(updateList + 1);
       }
     }
-    console.log(food);
   };
 
   const toggleBasket = (food) => {
@@ -53,6 +53,7 @@ export default function App() {
         allFood={allFood}
         toggleToGet={toggleToGet}
         toggleBasket={toggleBasket}
+        updateList={updateList}
       ></ToGetCont>
       <InBasketCont
         allFood={allFood}
