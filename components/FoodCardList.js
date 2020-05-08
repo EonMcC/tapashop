@@ -8,6 +8,7 @@ const FoodCardList = ({
   toggleBasket,
   showBasketBtn,
   inBasketCont,
+  allFoodCont,
 }) => {
   let foodList = food.map((food, index) => (
     <FoodCard
@@ -17,6 +18,7 @@ const FoodCardList = ({
       toggleBasket={toggleBasket}
       showBasketBtn={showBasketBtn}
       inBasketCont={inBasketCont}
+      allFoodCont={allFoodCont}
     ></FoodCard>
   ));
 
@@ -31,6 +33,7 @@ const styles = StyleSheet.create({
   foodCardList: {
     borderColor: "grey",
     borderWidth: 1,
+    borderRadius: 15,
     width: "90%",
     alignItems: "center",
     marginTop: 10,

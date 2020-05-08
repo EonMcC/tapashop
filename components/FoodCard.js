@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableHighlight,
   Button,
+  TouchableOpacity,
 } from "react-native";
 
 const FoodCard = ({
@@ -13,6 +14,7 @@ const FoodCard = ({
   toggleBasket,
   showBasketBtn,
   inBasketCont,
+  allFoodCont,
 }) => {
   const handleToggleToGet = () => {
     toggleToGet(food);
@@ -25,29 +27,42 @@ const FoodCard = ({
   const cardDisplay = () => {
     if (showBasketBtn && inBasketCont) {
       return (
-        <View style={food.toGet ? styles.cardToGet : styles.card}>
+        <View style={styles.card}>
           <View>
             <Text style={styles.cardText}>{food.name}</Text>
           </View>
-          <Button title="+/-" onPress={handleToggleBasket} />
+          <Button title="REMOVE" onPress={handleToggleBasket} />
         </View>
       );
     } else if (showBasketBtn) {
       return (
-        <View style={food.toGet ? styles.cardToGet : styles.card}>
+        <View style={styles.card}>
           <TouchableHighlight onPress={handleToggleToGet}>
             <Text style={styles.cardText}>{food.name}</Text>
           </TouchableHighlight>
-          <View
-            style={food.inBasket ? styles.btnInBasket : styles.btnNotBasket}
-          >
-            <Button title="+/-" onPress={handleToggleBasket} />
-          </View>
+          {food.inBasket && (
+            <TouchableHighlight style={styles.got} onPress={handleToggleBasket}>
+              <Text style={styles.gotText}>GOT</Text>
+            </TouchableHighlight>
+          )}
+          {!food.inBasket && (
+            <TouchableHighlight style={styles.get} onPress={handleToggleBasket}>
+              <Text style={styles.gotText}>GET</Text>
+            </TouchableHighlight>
+          )}
+        </View>
+      );
+    } else if (allFoodCont && food.toGet) {
+      return (
+        <View style={styles.card}>
+          <TouchableHighlight onPress={handleToggleToGet}>
+            <Text style={styles.cardTextStrike}>{food.name}</Text>
+          </TouchableHighlight>
         </View>
       );
     } else {
       return (
-        <View style={food.toGet ? styles.cardToGet : styles.card}>
+        <View style={styles.card}>
           <TouchableHighlight onPress={handleToggleToGet}>
             <Text style={styles.cardText}>{food.name}</Text>
           </TouchableHighlight>
@@ -64,6 +79,7 @@ const styles = StyleSheet.create({
     borderColor: "grey",
     width: 300,
     borderWidth: 1,
+    borderRadius: 15,
     justifyContent: "center",
     alignItems: "center",
     padding: 10,
@@ -72,7 +88,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   cardToGet: {
-    borderColor: "green",
     width: 300,
     borderWidth: 1,
     justifyContent: "center",
@@ -86,11 +101,23 @@ const styles = StyleSheet.create({
   cardText: {
     fontSize: 20,
   },
-  btnInBasket: {
-    borderColor: "green",
-    borderWidth: 2,
+  cardTextStrike: {
+    fontSize: 20,
+    textDecorationLine: "line-through",
   },
-  btnNotBasket: {},
+  got: {
+    borderRadius: 10,
+    backgroundColor: "#31aa31",
+    padding: 7,
+  },
+  get: {
+    borderRadius: 10,
+    backgroundColor: "#a11c1c",
+    padding: 7,
+  },
+  gotText: {
+    color: "white",
+  },
 });
 
 export default FoodCard;

@@ -29,13 +29,14 @@ const styles = StyleSheet.create({
   header: {
     paddingTop: 20,
     paddingBottom: 10,
-    backgroundColor: "yellow",
+    backgroundColor: "#31aa31",
     width: "100%",
   },
   headerFont: {
     textAlign: "center",
     fontSize: 25,
     fontWeight: "bold",
+    color: "white",
   },
 });
 
