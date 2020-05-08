@@ -32,7 +32,14 @@ const FoodCardList = ({
 const styles = StyleSheet.create({
   foodCardList: {
     borderColor: "grey",
-    borderWidth: 1,
+    backgroundColor: "#e4e9e3",
+    elevation: 25,
+    shadowColor: "black",
+    shadowOffset: {
+      width: 0,
+      height: 10,
+    },
+    borderWidth: 2,
     borderRadius: 15,
     width: "90%",
     alignItems: "center",

@@ -27,16 +27,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   header: {
-    paddingTop: 20,
-    paddingBottom: 10,
+    paddingTop: 25,
+    paddingBottom: 15,
     backgroundColor: "#31aa31",
     width: "100%",
   },
   headerFont: {
     textAlign: "center",
-    fontSize: 25,
+    fontSize: 35,
     fontWeight: "bold",
     color: "white",
+    fontFamily: "sans-serif-thin",
   },
 });
 
