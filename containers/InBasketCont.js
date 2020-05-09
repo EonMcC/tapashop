@@ -10,12 +10,14 @@ const InBasketCont = ({ allFood, toggleBasket }) => {
       <View style={styles.header}>
         <Text style={styles.headerFont}>In Basket</Text>
       </View>
-      <FoodCardList
-        food={foodList}
-        toggleBasket={toggleBasket}
-        showBasketBtn={true}
-        inBasketCont={true}
-      ></FoodCardList>
+      <View>
+        <FoodCardList
+          food={foodList}
+          toggleBasket={toggleBasket}
+          showBasketBtn={true}
+          inBasketCont={true}
+        ></FoodCardList>
+      </View>
     </View>
   );
 };

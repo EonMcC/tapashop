@@ -4,6 +4,7 @@ import AllFoodCont from "./containers/AllFoodCont";
 import ToGetCont from "./containers/ToGetCont";
 import InBasketCont from "./containers/InBasketCont";
 import Swiper from "react-native-swiper";
+import FoodCardList from "./components/FoodCardList";
 
 export default function App() {
   const [allFood, setAllFood] = useState([
@@ -26,6 +27,7 @@ export default function App() {
           allFoodCopy[i].inBasket = false;
         }
         setAllFood(allFoodCopy);
+        console.log(allFood[0]);
       }
     }
   };

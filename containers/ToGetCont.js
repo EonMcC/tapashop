@@ -10,12 +10,14 @@ const ToGetCont = ({ allFood, toggleToGet, toggleBasket }) => {
       <View style={styles.header}>
         <Text style={styles.headerFont}>To Get</Text>
       </View>
-      <FoodCardList
-        food={foodList}
-        toggleToGet={toggleToGet}
-        showBasketBtn={true}
-        toggleBasket={toggleBasket}
-      ></FoodCardList>
+      <View>
+        <FoodCardList
+          food={foodList}
+          toggleToGet={toggleToGet}
+          showBasketBtn={true}
+          toggleBasket={toggleBasket}
+        ></FoodCardList>
+      </View>
     </View>
   );
 };

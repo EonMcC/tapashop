@@ -27,11 +27,13 @@ const AllFoodCont = ({ allFood, toggleToGet, addFood }) => {
         <View style={styles.header}>
           <Text style={styles.headerFont}>All Food</Text>
         </View>
-        <FoodCardList
-          food={allFood}
-          toggleToGet={toggleToGet}
-          allFoodCont={true}
-        ></FoodCardList>
+        <View>
+          <FoodCardList
+            food={allFood}
+            toggleToGet={toggleToGet}
+            allFoodCont={true}
+          ></FoodCardList>
+        </View>
       </View>
       <View style={styles.addFood}>
         <TextInput
