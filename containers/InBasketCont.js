@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import FoodCardList from "../components/FoodCardList";
 
-const InBasketCont = ({ allFood, toggleBasket }) => {
+const InBasketCont = ({ allFood, toggleBasketm, mapFood }) => {
   let foodList = allFood.filter((food, index) => food.inBasket);
 
   return (

@@ -16,8 +16,8 @@ class FoodCardList extends Component {
   }
 
   mapFood = () => {
-    let allFoods = this.props.food.map((d, index) => ({
-      key: `item-${index}`, // For example only -- don't use index as your key!
+    let allFoods = this.props.food.map((d) => ({
+      key: `item-${d.id}`,
       food: d,
       toGet: d.toGet,
       inBasket: d.inBasket,
@@ -40,7 +40,7 @@ class FoodCardList extends Component {
         <View>
           <FoodCard
             food={item.food}
-            key={index}
+            key={item.id}
             toggleToGet={this.props.toggleToGet}
             toggleBasket={this.props.toggleBasket}
             showBasketBtn={this.props.showBasketBtn}

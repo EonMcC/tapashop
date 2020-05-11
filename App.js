@@ -8,14 +8,17 @@ import FoodCardList from "./components/FoodCardList";
 
 export default function App() {
   const [allFood, setAllFood] = useState([
-    { name: "Apples", toGet: false, inBasket: false },
-    { name: "Tofu", toGet: true, inBasket: true },
-    { name: "Milk, Oat", toGet: true, inBasket: false },
+    { id: 1, name: "Apples", toGet: false, inBasket: false },
+    { id: 2, name: "Tofu", toGet: true, inBasket: true },
+    { id: 3, name: "Milk, Oat", toGet: true, inBasket: false },
   ]);
+  const [nextID, setNextID] = useState(4);
 
   const addFood = (name) => {
-    const newFood = { name: name, toGet: false, inBasket: false };
+    const id = nextID;
+    const newFood = { id: id, name: name, toGet: false, inBasket: false };
     setAllFood([...allFood, newFood]);
+    setNextID(nextID + 1);
   };
 
   const toggleToGet = (food) => {
