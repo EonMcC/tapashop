@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -15,13 +15,16 @@ const FoodCard = ({
   showBasketBtn,
   inBasketCont,
   allFoodCont,
+  mapFood,
 }) => {
   const handleToggleToGet = () => {
     toggleToGet(food);
+    mapFood();
   };
 
   const handleToggleBasket = () => {
     toggleBasket(food);
+    mapFood();
   };
 
   const cardDisplay = () => {

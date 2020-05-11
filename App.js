@@ -43,7 +43,12 @@ export default function App() {
   };
 
   return (
-    <Swiper loop={false} showsPagination={false}>
+    <Swiper
+      loop={false}
+      showsPagination={false}
+      loadMinimal={true}
+      loadMinimalSize={0}
+    >
       <AllFoodCont
         allFood={allFood}
         toggleToGet={toggleToGet}

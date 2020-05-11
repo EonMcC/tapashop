@@ -7,14 +7,23 @@ class FoodCardList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: this.props.food.map((d, index) => ({
-        key: `item-${index}`, // For example only -- don't use index as your key!
-        food: d,
-        toGet: d.toGet,
-        inBasket: d.inBasket,
-      })),
+      data: [],
     };
   }
+
+  componentDidMount() {
+    this.mapFood();
+  }
+
+  mapFood = () => {
+    let allFoods = this.props.food.map((d, index) => ({
+      key: `item-${index}`, // For example only -- don't use index as your key!
+      food: d,
+      toGet: d.toGet,
+      inBasket: d.inBasket,
+    }));
+    this.setState({ data: allFoods });
+  };
 
   renderItem = ({ item, index, drag }) => {
     return (
@@ -37,6 +46,7 @@ class FoodCardList extends Component {
             showBasketBtn={this.props.showBasketBtn}
             inBasketCont={this.props.inBasketCont}
             allFoodCont={this.props.allFoodCont}
+            mapFood={this.mapFood}
           ></FoodCard>
         </View>
       </TouchableOpacity>
@@ -45,14 +55,15 @@ class FoodCardList extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
-        <DraggableFlatList
-          data={this.state.data}
-          renderItem={this.renderItem}
-          keyExtractor={(item, index) => `draggable-item-${item.key}`}
-          onDragEnd={({ data }) => this.setState({ data })}
-        />
-      </View>
+      // <View style={{ flex: 1 }}>
+      <DraggableFlatList
+        data={this.state.data}
+        renderItem={this.renderItem}
+        keyExtractor={(item, index) => `draggable-item-${item.key}`}
+        onDragEnd={({ data }) => this.setState({ data })}
+        extraData={this.state.data}
+      />
+      // </View>
     );
   }
 }
