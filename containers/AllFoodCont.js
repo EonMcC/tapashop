@@ -54,12 +54,13 @@ const AllFoodCont = ({ allFood, toggleToGet, addFood }) => {
 
 const styles = StyleSheet.create({
   allFoodCont: {
-    flex: 1,
+    height: "100%",
     width: "100%",
     justifyContent: "space-between",
     alignItems: "center",
   },
   headerAndList: {
+    height: "80%",
     width: "100%",
     alignItems: "center",
   },

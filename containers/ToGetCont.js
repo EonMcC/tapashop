@@ -25,8 +25,9 @@ const ToGetCont = ({ allFood, toggleToGet, toggleBasket, toGetCont }) => {
 
 const styles = StyleSheet.create({
   toGetCont: {
+    flex: 1,
     width: "100%",
-    justifyContent: "center",
+    justifyContent: "space-between",
     alignItems: "center",
   },
   header: {
