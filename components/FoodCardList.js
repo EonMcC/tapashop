@@ -16,13 +16,33 @@ class FoodCardList extends Component {
   }
 
   mapFood = () => {
-    let allFoods = this.props.food.map((d) => ({
-      key: `item-${d.id}`,
-      food: d,
-      toGet: d.toGet,
-      inBasket: d.inBasket,
-    }));
-    this.setState({ data: allFoods });
+    if (this.props.toGetCont) {
+      let toGetFoods = this.props.food.filter((food, index) => food.toGet);
+      let allFoods = toGetFoods.map((d) => ({
+        key: `item-${d.id}`,
+        food: d,
+        toGet: d.toGet,
+        inBasket: d.inBasket,
+      }));
+      this.setState({ data: allFoods });
+    } else if (this.props.inBasketCont) {
+      let toGetFoods = this.props.food.filter((food, index) => food.inBasket);
+      let allFoods = toGetFoods.map((d) => ({
+        key: `item-${d.id}`,
+        food: d,
+        toGet: d.toGet,
+        inBasket: d.inBasket,
+      }));
+      this.setState({ data: allFoods });
+    } else {
+      let allFoods = this.props.food.map((d) => ({
+        key: `item-${d.id}`,
+        food: d,
+        toGet: d.toGet,
+        inBasket: d.inBasket,
+      }));
+      this.setState({ data: allFoods });
+    }
   };
 
   renderItem = ({ item, index, drag }) => {
