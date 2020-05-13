@@ -74,10 +74,12 @@ export default function App() {
         allFood={allFood}
         toggleToGet={toggleToGet}
         toggleBasket={toggleBasket}
+        setAllFood={setAllFood}
       ></ToGetCont>
       <InBasketCont
         allFood={allFood}
         toggleBasket={toggleBasket}
+        setAllFood={setAllFood}
       ></InBasketCont>
     </Swiper>
   );

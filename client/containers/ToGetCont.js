@@ -2,7 +2,13 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import FoodCardList from "../components/FoodCardList";
 
-const ToGetCont = ({ allFood, toggleToGet, toggleBasket, toGetCont }) => {
+const ToGetCont = ({
+  allFood,
+  toggleToGet,
+  toggleBasket,
+  toGetCont,
+  setAllFood,
+}) => {
   let foodList = allFood.filter((food, index) => food.toGet);
 
   return (
@@ -17,6 +23,7 @@ const ToGetCont = ({ allFood, toggleToGet, toggleBasket, toGetCont }) => {
           showBasketBtn={true}
           toggleBasket={toggleBasket}
           toGetCont={true}
+          setAllFood={setAllFood}
         ></FoodCardList>
       </View>
     </View>

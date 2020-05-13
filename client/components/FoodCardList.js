@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, TouchableOpacity, Text } from "react-native";
+import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import DraggableFlatList from "react-native-draggable-flatlist";
 import FoodCard from "./FoodCard";
 
@@ -59,13 +59,13 @@ class FoodCardList extends Component {
       <TouchableOpacity
         style={{
           height: 100,
-          width: 300,
+          width: 400,
           alignItems: "center",
           justifyContent: "center",
         }}
         onLongPress={drag}
       >
-        <View>
+        <View style={styles.draggable}>
           <FoodCard
             food={item}
             key={item.id}
@@ -76,6 +76,7 @@ class FoodCardList extends Component {
             allFoodCont={this.props.allFoodCont}
             mapFood={this.mapFood}
           ></FoodCard>
+          <Text style={styles.draggableText}> = </Text>
         </View>
       </TouchableOpacity>
     );
@@ -95,6 +96,16 @@ class FoodCardList extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  draggable: {
+    flexDirection: "row",
+  },
+  draggableText: {
+    fontSize: 30,
+    textAlignVertical: "center",
+  },
+});
 
 export default FoodCardList;
 
