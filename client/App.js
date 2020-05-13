@@ -68,6 +68,7 @@ export default function App() {
         allFood={allFood}
         toggleToGet={toggleToGet}
         addFood={addFood}
+        setAllFood={setAllFood}
       ></AllFoodCont>
       <ToGetCont
         allFood={allFood}

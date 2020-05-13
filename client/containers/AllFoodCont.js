@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import FoodCardList from "../components/FoodCardList";
 
-const AllFoodCont = ({ allFood, toggleToGet, addFood }) => {
+const AllFoodCont = ({ allFood, toggleToGet, addFood, setAllFood }) => {
   const [enteredText, setEnteredText] = useState("");
 
   const textInputHandler = (inputText) => {
@@ -32,6 +32,7 @@ const AllFoodCont = ({ allFood, toggleToGet, addFood }) => {
             food={allFood}
             toggleToGet={toggleToGet}
             allFoodCont={true}
+            setAllFood={setAllFood}
           ></FoodCardList>
         </View>
       </View>

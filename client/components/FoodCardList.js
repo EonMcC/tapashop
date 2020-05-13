@@ -18,31 +18,40 @@ class FoodCardList extends Component {
   mapFood = () => {
     if (this.props.toGetCont) {
       let toGetFoods = this.props.food.filter((food, index) => food.toGet);
-      let allFoods = toGetFoods.map((d) => ({
-        key: `item-${d.id}`,
-        food: d,
-        toGet: d.toGet,
-        inBasket: d.inBasket,
+      let allFoods = toGetFoods.map((fd) => ({
+        id: fd.id,
+        name: fd.name,
+        inBasket: fd.inBasket,
+        toGet: fd.toGet,
+        key: `item-${fd.id}`,
       }));
       this.setState({ data: allFoods });
     } else if (this.props.inBasketCont) {
       let toGetFoods = this.props.food.filter((food, index) => food.inBasket);
-      let allFoods = toGetFoods.map((d) => ({
-        key: `item-${d.id}`,
-        food: d,
-        toGet: d.toGet,
-        inBasket: d.inBasket,
+      let allFoods = toGetFoods.map((fd) => ({
+        id: fd.id,
+        name: fd.name,
+        inBasket: fd.inBasket,
+        toGet: fd.toGet,
+        key: `item-${fd.id}`,
       }));
       this.setState({ data: allFoods });
     } else {
-      let allFoods = this.props.food.map((d) => ({
-        key: `item-${d.id}`,
-        food: d,
-        toGet: d.toGet,
-        inBasket: d.inBasket,
+      let allFoods = this.props.food.map((fd) => ({
+        id: fd.id,
+        name: fd.name,
+        inBasket: fd.inBasket,
+        toGet: fd.toGet,
+        key: `item-${fd.id}`,
       }));
       this.setState({ data: allFoods });
     }
+  };
+
+  handleDragEnd = (data) => {
+    console.log(data);
+    this.setState({ data });
+    this.props.setAllFood(data);
   };
 
   renderItem = ({ item, index, drag }) => {
@@ -54,10 +63,11 @@ class FoodCardList extends Component {
           alignItems: "center",
           justifyContent: "center",
         }}
-        onLongPress={drag}      >
+        onLongPress={drag}
+      >
         <View>
           <FoodCard
-            food={item.food}
+            food={item}
             key={item.id}
             toggleToGet={this.props.toggleToGet}
             toggleBasket={this.props.toggleBasket}
@@ -78,7 +88,7 @@ class FoodCardList extends Component {
         data={this.state.data}
         renderItem={this.renderItem}
         keyExtractor={(item, index) => `draggable-item-${item.key}`}
-        onDragEnd={({ data }) => this.setState({ data })}
+        onDragEnd={({ data }) => this.handleDragEnd(data)}
         extraData={this.state.data}
       />
       // </View>
